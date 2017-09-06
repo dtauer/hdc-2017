@@ -1,0 +1,10 @@
+extends _layout
+
+block content
+  .images
+    .inner
+      // "images" is not passed into the view
+      each image in images
+        a(href=`image/${image.id}`).image
+          img(src=`https://unsplash.it/320/?image=${image.id}`, alt=`${image.author}`)
+          span.image__cover View Image

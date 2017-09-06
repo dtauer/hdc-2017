@@ -1,0 +1,201 @@
+/* Reset issue where padding isn't included in dimensions
+    of an element */
+    html {
+      box-sizing: border-box;
+  }
+  *, *:before, *:after {
+      box-sizing: inherit;
+  }
+  
+  body {
+      font-family: 'Roboto Condensed', sans-serif;
+      font-size: 18px;
+      background: #dbd9d9;
+      margin: 0;
+  }
+  
+  .inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  }
+  
+  .images .inner {
+      flex-wrap: wrap;
+  }
+  
+  /* Check to see if the browser supports CSS Grid. If so the CSS inside the @supports wrapper will be included */
+  @supports(display:grid) or (display: -ms-grid) {
+      .images .inner {
+          display: -ms-grid;
+          display: grid;
+          -ms-grid-template-columns: 1fr 1fr 1fr;
+          grid-template-columns: 1fr 1fr 1fr;
+          -ms-grid-gap: 2em;
+          grid-gap: 1em;
+      }
+  }
+  
+  .image {
+      position: relative;
+      display: inherit; /* fix extra line space */
+      overflow: hidden;
+  }
+  
+  .image__cover {
+      background: rgba(255, 255, 255, .5);
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      color: #fff;
+      text-align: center;
+      padding-top: calc(50% - .5em);
+      transition: top .5s, background 1s;
+  }
+  
+  /* any .image__cover that's inside a hovered .image should move back to the top  */
+  .image:hover .image__cover {
+      top: 0;
+      background: rgba(0, 0, 0, .5);
+  }
+  
+  
+  header {
+      background: #fff; 
+      padding: 1em 0;
+      position:fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 999;
+      transition: padding .5s 
+  }
+  
+  .header--small {
+      padding: .2em 0;
+  }
+  
+  .header__logo {
+      font-size: 2em;
+      font-family: 'Cookie', sans-serif;
+  }
+  
+  /* Profile Area Styles */
+  .profile {
+      margin-top: 100px;
+  }
+  
+  .profile__image {
+      border-radius: 50%;
+      overflow: hidden;
+      width: 200px;
+      height: 200px;
+      flex: 0 0 200px;
+  }
+  
+  .profile__info {
+      flex: 1 1 auto;
+      margin-left: 2em;
+  }
+  
+  .profile__meta {
+      display: flex;
+      list-style: none;
+      padding: 0;
+      flex-wrap: wrap;
+  }
+  
+  .profile__meta li {
+      margin-right: 2em;
+  }
+  
+  
+  
+  
+  
+  
+  .button {
+      color: #4090db;
+      text-decoration: none;
+      border: 1px solid currentColor;
+      padding: .5em 1em;
+  }
+  
+  .button--blue {
+      background:  #4090db;
+      color: #fff;
+      border-color:#4090db;
+      /*border-radius: 4px;*/
+  }
+  
+  img {
+      max-width: 100%;
+  }
+  
+  .link {
+      text-decoration: none;
+      color: #4090db;
+  }
+  
+  .link:hover {
+      text-decoration: underline;
+  }
+ 
+  
+  .full {
+      /* Position it, change the width/height, background color */
+      /* How should it "display" the children maybe in "flexible" way? */
+      background: rgba(0, 0, 0, .5);
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  
+  .hidden {
+      display: none;
+  }
+  
+  /* @media queries for Responsive Web Design. */
+  @media(max-width: 1000px) {
+      .inner {
+          padding-left: 1em;
+          padding-right: 1em; 
+      }
+  }
+  
+  @media(max-width: 630px) {
+      .images .inner {
+          -ms-grid-template-columns: 1fr 1fr;
+          grid-template-columns: 1fr 1fr;
+      }
+  
+      .profile .inner {
+          flex-direction: column;
+      }
+      
+      .profile__image{
+          width: 100px;
+          height: 100px;
+          flex: 0 0 100px;
+      }
+  
+  
+      header .inner {
+          flex-wrap: wrap;
+          justify-content: space-around;
+      }
+      .header__search {
+          order: 1;
+      }
+  
+  }
