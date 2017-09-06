@@ -4,9 +4,7 @@
   "description": "Workshop files and slides for the 2017 Heartland Developers Conference",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon server.js",
-    "start": "node server.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Dustin Tauer",
   "license": "ISC",
